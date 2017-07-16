@@ -1,4 +1,4 @@
-# javascript plugin (jQuery)
+# javascript 기초_5
 
 지난시간엔 반복문에 관한 내용에 대해 알아보았습니다.
 이번시간에는 예외 처리라는 부분과 기타 내용들에 대한 부분을 이해해 보도록 하겠습니다.
@@ -15,7 +15,10 @@
 
 [TOC]
 
-[jQuery사이트](http://jquery.com)
+---
 
-[jQuery 더 많은 내용 익히러가기](../jquery/a_beginner.md)
+### 예외처리
 
+- try ~ catch~finally
+
+---
