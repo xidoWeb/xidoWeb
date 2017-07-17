@@ -210,7 +210,7 @@ function(){
 ```javascript
 var MyFunction = function(){				// 변수 'MyFunction'에 함수를 대입
   console.log("함수를 처음 사용해 보았습니다!");
-}
+};
 
 MyFunction();								// 변수 'MyFunction'을 실행(함수는 '()' 를 붙임)
 ```
@@ -230,7 +230,7 @@ MyFunction();								// 변수 'MyFunction'을 실행(함수는 '()' 를 붙임)
 var multiply = function(a, b){
   var result = a + b;
   return result;
-}
+};
 
 console.log(multiply(10, 30));
 ```
@@ -264,7 +264,7 @@ var functionLevel = function () {
         var myScope = "function level scope";
     }
     console.log(myScope);
-}
+};
  
 functionLevel();
 console.log(myScope);
