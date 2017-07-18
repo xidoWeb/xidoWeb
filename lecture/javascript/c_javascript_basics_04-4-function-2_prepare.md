@@ -124,9 +124,9 @@ function myHoist(){
 ```javascript
 function myHoist(){
   return 'hoistTest';
-}
+}									// 함수 표현식의 경우에 ';'를 표기
 
-var hoistTest,test1,test2
+var hoistTest,test1,test2;
 
 console.log(test1);						
 console.log(test2);
@@ -137,8 +137,7 @@ hoistTest = 'my text';
 test1 = 'test1';
 test2 = function(){
   return 'hoist test';
-};
-
+};									// 함수 표현식의 경우에 ';'를 표기
 ```
 
 위 코드를 보면 왜 그런 결과물이 나온지를 알 수 있습니다.
@@ -165,20 +164,35 @@ var add = new Function('x','y','return x+y;');
 ## 함수의 종류
 
 - [익명함수](#noneName)
-- [내장함수(중첩함수)](#innerFn)
+- 재귀함수
+- [중첩함수](#innerFn)
 - [콜백함수(call back)](#callBack)
 - **즉시 실행 함수** (**IIFE**: Immediately Invoked Function Expressions)
+- 내장함수
+- 클로저
 
 ---
 
 ### 익명함수<div id="noneName"></div>
 
 함수 리터럴을 이용해 정의된 함수를 익명함수 라고 합니다.
-함수의 이름이 없기 때문에 익명함수라고 불리우고 있으며, 주로 변수에 할당되거나 함수 인자의 값 또는 반환값으로 사용되어 집니다.
+함수의 이름이 없기 때문에 익명함수라고 불리우고 있으며, 
+주로 변수에 할당되거나 함수 인자의 값 또는 반환값으로 사용되어 집니다.
+
+함수표현식에 사용하는 함수가 대부분이 익명함수입니다.
+
+```javascript
+var NoNameFn = function(){
+  var fnName = '함수의 이름이 정의되지 않았으므로, 호출된 함수는 익명함수 입니다.';
+  return fnName;
+};
+
+console.log( NoNameFn() );
+```
 
 ---
 
-### 내장함수(중첩함수)<div id="innerFn"></div>
+### 중첩함수<div id="innerFn"></div>
 
 ```javascript
 function example(){
@@ -190,14 +204,14 @@ function example(){
 }
 ```
 
- 위 코드는 함수 내부에 또다른 함수를 사용하여 중첩처리하는 형태입니다.
+ 위 코드는 함수 **내부에 또다른 함수를 사용하여 중첩처리하는 형태**입니다.
 주로 특정 함수에서만 사용할 기능을 외부에 노출시키지 않고 내부에 정의해서 사용할 경우에 많이 사용하는 방법입니다.
 
 변수는 지역변수 및 전역변수 등이 존재합니다.
 이는 각 변수의 영역(**scope**)이 존재하고, 해당영역은 함수의 구분으로 이루어지게되는데 
 이때 내부에 존재하는 함수를 별도로 참조하거나 할수 있습니다.
 
-이를 활용하여 객체지향의 캡슐화, 은닉화 등으로 처리할 수 있는 방법들이 될 수 있습니다.
+이를 활용하여 **객체지향의 캡슐화, 은닉화** 등으로 처리할 수 있는 방법들이 될 수 있습니다.
 
 즉, 전역 변수 이름공간을 과도하게 사용하지 않고 연관된 함수를 묶어 처리할수 있는 것 입니다.
 이는 전역 범위의 함수의 수를 낮게 유지할 수 있는 방법 중의 하나입니다.
@@ -294,13 +308,15 @@ doFn(function(msg){
 ```javascript
 var mySquare = (function (x) {
     return x*x;
-})(2);
+})(2);								// 변수 'mySquare'에 대입된 함수의 인자 'x'의 값을 2로 할당
+
 console.log(mySquare);
 ```
 
 즉시 실행함수도 함수의 종류중에 하나이기 때문에 변수에 저장하여 사용하는 것도 가능합니다. 
-
 그렇다면 즉시실행함수는 왜 어떻게 사용하는 것일까요?
+
+---
 
 #### 초기화
 
@@ -329,6 +345,8 @@ console.log(textList);
 또한 textList는 지역 변수로, 전역 변수와 충돌없이 초기화 할 수 있게 됩니다.
 변수의 범위(**scope**)의 내용은 다음시간에 설명드리도록 하겠습니다.
 
+---
+
 #### 라이브러리 전역 변수의 충돌
 
 ```javascript
@@ -345,4 +363,6 @@ Query나 Prototype 라이브러리는 동일한 $라는 전역 변수를 사용�
 **즉시 실행 함수를 사용하여 $ 전역 변수의 충돌을 피할 수 있습니다.**
 
 ---
+
+
 

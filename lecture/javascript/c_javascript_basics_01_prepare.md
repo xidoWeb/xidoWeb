@@ -82,7 +82,7 @@ var myYearsSecond = yearSecond * myYearsOld;
 1분이 지날때 마다 1씩 늘어나기도하고, 시험날짜를 셀때 하루씩 빼기도 합니다.
 이렇게 1씩 늘어나는것을 증가(increment), 1씩 줄어드는 것은 감소(ddcrese)라고 부릅니다.
 
-1씩 늘어나는 증가는 `++`라는 연산자를 사용하며, 1씩 감소 하는 연산자는 `—`라고 합니다.
+1씩 늘어나는 증가는 `++`라는 연산자를 사용하며, 1씩 감소 하는 연산자는 `--`라고 합니다.
 
 ```javascript
 var minuteTime = 30;
@@ -226,7 +226,7 @@ console.log(xidoweb);
 위 코드에서 확인했든 `문자 + 문자`, `문자 + 숫자`, `숫자 + 문자`의 경우는 나열의 형태를 지니게 됩니다.
 
 ```javascript
-var green = 'green ';
+var green = 'green ';				// 띄어쓰기 확인
 var com = 'computer';
 var comColl = green + com;
 console.log(comColl);
@@ -260,6 +260,15 @@ console.log(myjs + learn.length);
 `()`를 붙이는 것은 어떠한 실행을 의미하는 메소드를 의미하는 것이고,
 위 코드는 무언가를 변환시키거나 새롭게 적용하는 등의 실행의 효과가 아닌 확인의 코드일 뿐입니다.
 
+```javascript
+var java = 'java';
+var script = ' script';
+var webLang = java + script;
+console.log(webLang.length);
+```
+
+
+
 ---
 
 ### 문자열에서 한글자 가져오기
@@ -284,8 +293,12 @@ console.log(secretTextResult);
 ### 문자열 잘라내기
 
 ```javascript
-'문자내용 잘라내기'.slice(1,5);
+'문자내용 잘라내기'.slice(1,5);				// 문자 '문자내용 잘라내기'의 두번째 글자에서 여섯번째 글자 까지
+```
 
+위 내용은 어떠한 글자를 사용하는데 있어 일부 텍스트를 잘라내고, 필요한 텍스트를 사용하도록 처리하는 내용입니다.
+
+```javascript
 var longText = '긴 문자열의 내용을 잘라내기';
 ```
 
@@ -298,9 +311,9 @@ var longText = '긴 문자열의 내용을 잘라내기';
 ### 문자열 대/소문자 바꾸기
 
 ```javascript
-'hello my javascript studing team'
+'hello my javascript studing team'.toUpperCase();
 
-'hello my javascript studing leader'
+'hello my javascript studing leader'.toLowerCase();
 ```
 
 
