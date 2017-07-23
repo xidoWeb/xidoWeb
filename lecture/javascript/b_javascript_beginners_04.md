@@ -142,7 +142,7 @@ var Score = 'int';
 
 실제로 자바스크립트 뿐만 아니라, 다른 언어에서도 띄어쓰기로 식별자를 사용하는 경우 전혀다른 의미로 전달되는 경우가 많기 때문에 사용할 수 없는 방법 중 하나입니다.
 
-구분을 원한다면 **snake_case(under_score)**, **pascal**,  **camelCase** 기법중의 하나를 권장합니다.
+구분을 원한다면 **snake_case(under_score)**, **Pascal**,  **camelCase** 기법중의 하나를 권장합니다.
 
 
 
@@ -152,7 +152,7 @@ var Score = 'int';
 var last_name = 'my name is xido';
 ```
 
-- **pascal** : 모든 단어의 첫 문자는 대문자
+- **Pascal** : 모든 단어의 첫 문자는 대문자
 
 ```javascript
 var LastName = 'my name is Xido';
@@ -212,7 +212,7 @@ var d_001 = 'document first';
 | **private**  | **protected**    | **public** | **short**      | **static**   |
 | **super**    | **synchronized** | **throws** | **transient**  | **volatile** |
 
-즉, `msg`, `_tmp`,`$ij`,`xyz01`,`gif`,`test_01`등의 변수명은 가능하지만 아래의 표현은 사용할 수 없습니다.
+즉, `msg`, `_tmp`, `$ij`, `xyz01`, `gif`, `test_01`등의 변수명은 가능하지만 아래의 표현은 사용할 수 없습니다.
 
 -  `01xyz` : 숫자를 첫글자로 사용했기 때문에 사용할 수 없습니다.
 -  `#id` : 특수문자를 사용했습니다.(_, $만 사용가능)
@@ -312,7 +312,7 @@ mouse = 'my mouse brand is logitech!';
 다른 언어에서는 찾아볼 수 없는 현상 중 하나입니다.
 
 ```javascript
-console.log(hoistResult);				// 선언되지 않은 변수 'hoistResult'
+console.log(hoistResult);				// 선언되지 않은 변수 'hoistResult' - undefined
 
 var hoistResult = null;					// 'hoistResult' 선언 및 값 'null' 처리
 console.log(hoistResult);

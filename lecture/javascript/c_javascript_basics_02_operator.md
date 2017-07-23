@@ -83,6 +83,16 @@ console.log("값: ", result);
 
 #### 문자열 연산자
 
+기본적으로 사칙연산자와 크게 다르지 않습니다. 
+다만 문자열 연산자는 **문자 + 문자**, **문자 + 숫자** 형태의 기능을 의미합니다. 
+
+```javascript
+var my = 'my';
+var lang = ' language is Korean';
+
+console.log(=my + lang); // console logs the string "my language is Korean".
+```
+
 ---
 
 #### 증감연산자
@@ -206,27 +216,6 @@ console.log('값 재확인:', before);
 
 ---
 
-#### 구조해제
-
-복잡한 대입 연산에서, [구조 해제 대입](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) 문법은 배열의 구조나 객체를 반영하여, 
-배열이나 객체에서 데이터를 추출할 수 있게 해주는 자바스크립트 표현입니다.
-
-```javascript
-var foo = ["one", "two", "three"];
-
-// without destructuring
-var one   = foo[0];
-var two   = foo[1];
-var three = foo[2];
-
-// with destructuring
-var [one, two, three] = foo;
-```
-
-
-
----
-
 #### 대입연산자 1: ( = )
 
 자바스크립트의 연산자중 가장 많이 접하는 연산자는 대입연산자 입니다. 
@@ -238,6 +227,7 @@ var x = 1;
 var y = x;
 x = 2;
 console.log(y);
+
 // 참조 전달방식(참조형)
 var ary1 = [0,1,2];
 var ary2 = ary1;
@@ -279,6 +269,33 @@ console.log(ary2);
 - **참조 전달**: 값을 보관하고 있는 참조 장소의 정보를 건네주는 것
 
 ---
+
+#### 구조해제/비구조화 할당(destructuring assignment)
+
+복잡한 대입 연산에서, [구조 해제 대입](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) 문법은 배열의 구조나 객체를 반영하여, 
+배열이나 객체에서 데이터를 추출할 수 있게 해주는 자바스크립트 표현입니다.
+
+이름이 하나로 정해져 있는 게 아니라서 구조분해라고 하는 사람도 있고, 
+**비구조화**라는 사람도 있고 **객체 파괴**라는 사람도 있습니다.
+**비구조화 할당**(**destructuring assignment**) 구문은 배열 또는 객체에서 데이터를 
+별개(distinct) 변수로 추출할 수 있게 하는 JavaScript 식(expression:표현)입니다.
+
+구조해제 대입문법은 ES6이후의 내용에서 좀더 다뤄보겠습니다.
+
+```javascript
+var foo = ["one", "two", "three"];
+
+// without destructuring
+var one   = foo[0];
+var two   = foo[1];
+var three = foo[2];
+
+// with destructuring
+var [one, two, three] = foo;
+```
+
+---
+
 ### 비교연산자
 
 비교연산자는 좌변/우변의 값을 비교하여 그 결과를 **true/false**(참/거짓)로 반환합니다.
@@ -300,7 +317,7 @@ console.log(ary2);
 
 ---
 
-#### 등가연산자
+#### 등가 연산자(==)
 
 `==`연산자는 좌변/우변의 값을 비교하여 같은 경우에는 true, 같지 않을 경우에는 false를 반환합니다.
 그러나 오퍼랜드의 데이터형에 따라 비교의 기준이 다르므로 주의가 필요합니다.
@@ -315,9 +332,90 @@ console.log(ary2);
 
 위의 표는 등가 연산자의 평가기준을 담은 것 입니다.
 
-#### 동치연산자
+---
+
+#### 동치 연산자(===)
+
+동일이라는 뜻으로 사용되는 연산자 입니다.
+등가연산자는 `==`를 사용하지만, 동치연산자는 `===`를 사용합니다. 
+
+주로 같은 값인지 아닌지를 판단하는 내용입니다.
+그렇기 때문에 결과는 `true`, `false`로 구분합니다.
+
+위의 등가연산자와 같이 설명하겠습니다. 
+
+**등가연산자**의 `==` 표기법과 **동치연산자**의  `===` 표현법이 있습니다.
+반대의 개념으로는 `!=`, `!==`의 표현도 있습니다. 이때 사용된 `!`의 의미는 반대의 의미를 가집니다. 
+둘은 결과갑의 형태와, 형타입의 형태까지 파악하는 범위에서 결과가 다른 형태를 취합니다. 
+
+즉, `==`의 형태는 자동으로 형변환이 이루어 지면서 비교를 하고, `===`는 형변환이 이루지지 않고 비교를 합니다.
+
+```javascript
+var num1 = 254;
+var str1 = '254';
+console.log(num1 == str1);						// return true
+console.log( typeof(num1), typeof(str1) );		
+console.log(num1 === str1);						// return false
+
+var num2 = 1;
+var boo1 = true;
+console.log(num2 == boo1);						// return true
+console.log(typeof(num2), typeof(boo1));
+console.log(num2 === boo1);						// return false
+
+var und;
+var nl = null;
+console.log(und);
+console.log(nl);
+console.log(typeof(und));
+console.log(typeof(nl));
+console.log(und == nl);							// return true
+console.log(und === nl);						// return false
+
+null == false               					// return false
+'true' == true              					// return false
+true == 2										// return false
+```
+
+---
 
 #### 조건연산자(삼항연산자)
+
+```javascript
+test ? expression1 : expression2
+```
+
+기본적으로 어떠한 내용을 주고 해당하는 식을 `?`를통해 **참/거짓**을 판단하게하고,
+`:`를 기점으로 참이면 왼쪽, 거짓이면 오른쪽의 식을 진행하도록 처리하는 구조입니다.
+
+```javascript
+var now = new Date();
+var greeting = "Good" + ((now.getHours() > 17) ? " evening." : " day.");
+```
+
+위 내용에서 `new Date();`는 현재의 시간을 확인하는 메소드입니다.
+앞에 `new`라고 붙으면 생성자로 별도로 처리하도록 하게만드는 기능입니다.
+형재 시간을 파악하여, `17시`기준 으로 넘으면(**참**) **evening**를 호출, 넘지 않으면 **day**를 호출하도록 되어있습니다.
+
+```javascript
+var now = new Date();
+var greeting = "Good";
+if (now.getHours() > 17){
+  greeting += " evening.";
+} else {
+   greeting += " day.";
+}
+```
+
+위 내용은 삼항연산자를 사용하지 않을경우에 쓸 수 있는 조건문입니다.
+아직 조건문을 배우지 않았지만 위의 삼항 연산자와 동일한 기능을 하도록 처리된 내용으로 판단할 수 있습니다. 
+
+```javascript
+var age = 30;
+var status = (age >= 18) ? "adult" : "minor";
+```
+
+
 
 ---
 
@@ -334,13 +432,188 @@ console.log(ary2);
 
 위 표는 자바스크립트에서 이용 가능한 논리 연산자 입니다.
 
-#### &&연산자
+---
 
-#### ||연산자
+#### && 연산자
 
-#### !(반대)연산자
+다음의 코드는 && (논리 곱) 연산자의 예제를 보여주고 있습니다.
+
+```javascript
+var a1 =  true && true;     		// t && t returns true
+var a2 =  true && false;    		// t && f returns false
+var a3 = false && true;     		// f && t returns false
+var a4 = false && (3 == 4); 		// f && f returns false
+var a5 = "Cat" && "Dog";    		// t && t returns Dog
+var a6 = false && "Cat";    		// f && t returns false
+var a7 = "Cat" && false;    		// t && f returns false
+```
 
 ---
+
+#### || 연산자
+
+다음의 코드는 || (논리 합) 연산자의 예제를 보여주고 있습니다.
+
+```javascript
+var o1 =  true || true;     		// t || t returns true
+var o2 = false || true;     		// f || t returns true
+var o3 =  true || false;    		// t || f returns true
+var o4 = false || (3 == 4); 		// f || f returns false
+var o5 = "Cat" || "Dog";    		// t || t returns Cat
+var o6 = false || "Cat";    		// f || t returns Cat
+var o7 = "Cat" || false;    		// t || f returns Cat
+```
+
+---
+
+#### ! (반대)연산자
+
+다음의 코드는 ! (논리 부정) 연산자의 예제를 보여주고 있습니다.
+
+```javascript
+var n1 = !true;  		// !t returns false
+var n2 = !false; 		// !f returns true
+var n3 = !"Cat"; 		// !t returns false
+```
+
+##### Conversion rules
+
+###### Converting AND to OR
+
+```javascript
+var condition1 = ture;
+var condition2 = true;
+console.log(condition1 && condition2);
+```
+
+위 코드에서 변수 `condition1`의 값은 참(true)입니다, 또 다른 변수 `condition2`의 값도 참(true)입니다.
+둘의 결과값은 `true` 로 이해할 수 있습니다. 
+위의 내용과 아래 코드의 내용은 항상 같은 결과를 만들어 냅니다. 
+
+```javascript
+console.log( !(!condition1 || !condition2) );
+```
+
+위 코드의 결과값 또한 참입니다. 
+`!`의 연산자의 경우 반대의 개념으로 정리 및 처리하는 기능입니다.
+
+
+
+###### Converting OR to AND
+
+```javascript
+var condition1 = ture;
+var condition2 = true;
+console.log(condition1 || condition2);
+```
+
+위 코드의 내용 또한 &&연산자의 형태로 변형처리 하루 수 있습니다. 
+
+```javascript
+console.log( !(!condition1 && !condition2) );
+```
+
+
+
+###### Converting between NOTs
+
+자바스크립트의 `!`연산자는 다른언어와 다른 특이한 부분들이 많습니다. 
+`!`를 두개이상 사용할 수도 있습니다. 
+
+```javascript
+var condition = true;
+console.log( condition );						// true
+console.log( !!condition );						// true
+console.log( !condition );						// false
+```
+
+---
+
+##### 중첩된 괄호 제거
+
+논리적인 표현들이 대다수 같은 성격을 가지고 있슶니다.
+어떤 규칙에 따라 복잡한 표현에서 괄호를 떼어 내는 것은 항상 가능합니다.
+
+
+
+###### 중첩 제거
+
+다음과 같은 합성 작업을 포함한 다음과 같은 합성 작업을 수행합니다.
+
+```javascript
+condition1 || (condition2 && condition3)
+```
+
+위 내용은 비교연산처리하기위한 내용을 구분하기 위한 괄호를 표기한 내용입니다. 
+하지만 실제로 둘을 비교하는 내용에서 우선순위라는 것이 존재하기 때문에 `( )`를 사용할 필요는 없습니다. 
+`||` 와 `&&`의 기호는 **&&**를 우선순위로 보고 있습니다. 
+즉, 아래의 내용으로 작업하더라도 문제없이 진행됩니다.
+
+```javascript
+condition1 || condition2 && condition3
+```
+
+반대의 경우는 어떻게 되는 것 일까요?
+
+###### Removing nested OR
+
+```javascript
+condition1 && (condition2 || condition3)
+```
+
+위의 경우는 `( )`를 감싸지 않으면 `&&`를 먼저 수행하기 때문에, 반드시 `( )`를 처리해 주어야 합니다. 
+하지만, 아래의 내용을보면 다른 표현을 수행하고 있습니다. 
+
+```javascript
+!(!condition1 || !condition2 && !condition3)
+```
+
+다소 복잡하기는 하지만 이전의 코드 내용과 동일한 기능을 하는 내용입니다. 
+
+상황에 따라 다양한 형식과 비교를 하게 되는 경우가 있기에 위 표현식을 이해하고 정리해 두는 것이 필요합니다. 
+
+---
+
+### 콤마 연산자
+
+[콤마 연산자](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Comma_Operator) (`,`)는 두 피연산자를 비교하고, 마지막 피연산자의 값을 반환합니다. 이 연산자는 주로 `for` 반복문 안에서 각각의 시간에 복수의 변수들을 갱신하기 위하여 사용합니다.
+
+예를 들어, a는 각 변에 10개의 원소가 있는 2차원 배열일때, 다음의 코드는 콤마 연산자를 두 변수를 한번에 증가 시키기 위하여 사용하였습니다. 이 코드는 배열의 대각선에 위치한 원소를 출력합니다.
+
+```javascript
+for (var i = 0, j = 9; i <= j; i++, j--){
+	console.log("a[" + i + "][" + j + "]");
+}
+```
+
+```javascript
+var a, b, c, x, y, z;
+a = b = 3, c = 4; 
+console.log(a); // 3 (좌-우선)
+
+x = (y = 5, z = 6);
+console.log(x); // 6 
+```
+
+위 콤마 연산자는 배열, 객체에서 쓰이는 콤마 혹은 함수 매개 변수에서 쓰이는 콤마와는 완전히 다릅니다.
+하지만 잘 보면 어떠한 내용을 가지고 있는지 이해할 수 있습니다. 
+
+#### 연산 후 반환
+
+콤마 연산자를 활용하는 또 다른 예제는 반환 전에 연산하는 방법입니다. 언급한대로 항상 마지막에 선언한 요소가 반환되더라도 콤마 전에 있는 표현식이 연산 된 후 반환됩니다. 그래서 다음과 같습니다:
+
+```javascript
+function myFunc () {
+  var x = 0;
+
+  return (x += 1, x); // ++x 와 같은 효과
+}
+
+console.log(myFunc());
+```
+
+---
+
 ### 비트연산자
 
 [비트단위 연산자](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators) 는 피연산자를 10진수, 16진수, 8진수처럼 취급하지 않고 32비트의 집합으로 취급합니다. 
@@ -351,7 +624,6 @@ console.log(ary2);
 현시점에서 비트연산자에 대한 내용은 다루지 않습니다. 
 비트연산자에 대해 상세하게 이해하고 싶다면 [이곳](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Expressions_and_Operators#비트단위_연산자)을 확인하세요.
 
-### 
 ---
 ### 기타연산자
 
@@ -365,21 +637,6 @@ console.log(ary2);
 | void       | 미정의 값을 되돌림              |
 
 
-
----
-### 연산자 우선순위 및 결합 순서
-
-어떤 식 안에 복수의 연산자가 포함되어 있을 경우에는 "어떠한 순서로 처리할지?"를 판단할 필요가 있습니다.
-이것을 결정하는 것이 연산자의 **우선 순위**와 **결합 순서**입니다.
-특히, 복잡한 식을 기술하는 경우에는 이것을 잘 이해해 두지 않으면, 
-생각지도 못한 곳에서 의도하지 않은 결과가 발생할 수도 있으니 주의가 필요합니다.
-
-#### 우선순위
-
-#### 결합순서
-
-> 우선순위가 동일한 경우 
-> 어떤 방향으로 연산을 행할 것인지를 정한 룰
 
 ---
 

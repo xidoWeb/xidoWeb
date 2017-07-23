@@ -183,7 +183,7 @@ console.log(fruits[3]);						// 변수 fruits의 내용중 4번째(3은 4번째)
 var baby = {
   'korean':80,					// 변수 'baby' 내부에는 키는 'korean', value는 80
   'english':50,					// 변수 'english' 내부에는 키는 'korean', value는 50
-  'math': 70					// 변수 'maty' 내부에는 키는 'korean', value는 70
+  'math': 70					// 변수 'math' 내부에는 키는 'korean', value는 70
 };
 console.log(baby.korean);		// 변수 'baby'의 국어성적을 확인하려면, 'baby.korean' 으로 확인
 ```
