@@ -128,20 +128,20 @@ console.log('다섯번째 바로 1더하기:', ++before);
 ```javascript
 var after = 20;
 // 연산 후 확인
-console.log('최초: ', before);
-before--;
-console.log('처음1더하기: ', before);
-before--;
-console.log('두번째1더하기: ', before);
+console.log('최초: ', after);
+after++;
+console.log('처음1더하기: ', after);
+before++;
+console.log('두번째1더하기: ', after);
 //연산 자체를 확인
-console.log('현재값: ', before);
-console.log('바로1더하기: ', before--);
-console.log('두번째 바로 1더하기:', before--);
-console.log('세번째 바로 1더하기:', before--);
-console.log('중간 확인하기:', before);
-console.log('다시 바로 1더하기:', before--);
-console.log('다시 두번째 바로 1더하기:', before--);
-console.log('값 재확인:', before);
+console.log('현재값: ', after);
+console.log('바로1더하기: ', after++);
+console.log('두번째 바로 1더하기:', after++);
+console.log('세번째 바로 1더하기:', after++);
+console.log('중간 확인하기:', after);
+console.log('다시 바로 1더하기:', after++);
+console.log('다시 두번째 바로 1더하기:', after++);
+console.log('값 재확인:', after);
 ```
 
 
@@ -385,17 +385,19 @@ true == 2										// return false
 test ? expression1 : expression2
 ```
 
-기본적으로 어떠한 내용을 주고 해당하는 식을 `?`를통해 **참/거짓**을 판단하게하고,
-`:`를 기점으로 참이면 왼쪽, 거짓이면 오른쪽의 식을 진행하도록 처리하는 구조입니다.
+기본적으로 어떠한 내용을 주고 해당하는 식을 `?`를통해 **참/거짓**을 판단하게하고, `:`를 기점으로 
+**참이면 왼쪽**, **거짓이면 오른쪽**의 식을 진행하도록 처리하는 구조입니다.
 
 ```javascript
 var now = new Date();
 var greeting = "Good" + ((now.getHours() > 17) ? " evening." : " day.");
+
+console.log(greeting);
 ```
 
 위 내용에서 `new Date();`는 현재의 시간을 확인하는 메소드입니다.
 앞에 `new`라고 붙으면 생성자로 별도로 처리하도록 하게만드는 기능입니다.
-형재 시간을 파악하여, `17시`기준 으로 넘으면(**참**) **evening**를 호출, 넘지 않으면 **day**를 호출하도록 되어있습니다.
+현재 시간을 파악하여, `17시`기준 으로 넘으면(**참**) **evening**를 호출, 넘지 않으면 **day**를 호출하도록 되어있습니다.
 
 ```javascript
 var now = new Date();
@@ -405,6 +407,8 @@ if (now.getHours() > 17){
 } else {
    greeting += " day.";
 }
+
+console.log(greeting);
 ```
 
 위 내용은 삼항연산자를 사용하지 않을경우에 쓸 수 있는 조건문입니다.
